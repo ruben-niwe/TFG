@@ -32,4 +32,12 @@ Se guarda el modelo para poder usarlo en la regresión.
 
 ### entrenamiento_regresion.ipynb
 
+Para mejorar este TFG queremos dar también los resultados de la energía verdadera, la variabla `trueE` para ello debemos entrenar modelos de regresión. Aquí seguiremos dos enfoques, darle al modelo como X para entrenar las variables [hitX, hitY, hitZ, hitInteg] o otro enfoque distinto sería como en los resultados con el modelo de Machine Learning se han obtenido unos buenos resultados, podriamos también darle el siguiente enfoque: clasificar primeramente la partícula y entrenar con los siguientes datos [tipo_particula, hitX, hitY, hitZ, hitInteg]. Actualmente se sigue trabajando en este enfoque para ver que resultados se obtiene. Esto se hace para poder decir lo siguiente: esta particula es un kaon/pion y lo hace con la siguiente energía.
+
+
+### DL.ipynb
+
+Con este notebook intentaremos clasificar las partículas mediante modelos de Deep Learning y veremos como se comportan. Para ello procesaremos los hits en vez de procesar los eventos para ver si conseguimos obtener mejores resultados ya que así no se pierde información.
+
+
 
