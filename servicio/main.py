@@ -3,9 +3,10 @@ import pandas as pd
 import io
 import logging
 
-# Importar las funciones de clasificación desde el módulo
+# Importar las funciones de regresion y clasificación desde el módulo
 from clasificacion import clasificacion_XGBoost
 from regresion import regresion_energiaEntrada
+
 
 app = FastAPI()
 
