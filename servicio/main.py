@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, BackgroundTasks
 import pandas as pd
 import io
 import logging
@@ -6,6 +6,7 @@ import logging
 # Importar las funciones de regresion y clasificación desde el módulo
 from clasificacion import clasificacion_XGBoost
 from regresion import regresion_energiaEntrada
+from entrenarModelos import entrenar_modelos
 
 app = FastAPI()
 
@@ -45,7 +46,12 @@ async def EnergiaEntrada(file: UploadFile):
     
     respuesta = {
         "tipo_particula": particula,
-        "energia": f"{energia} GeV"
+        "energia_entrada": f"{energia} GeV"
     }
 
     return respuesta
+
+@app.get("/retraining")
+async def Retraining(background_tasks: BackgroundTasks):
+    background_tasks.add_task(entrenar_modelos)
+    return {"Entrenamiento_finalizado"}

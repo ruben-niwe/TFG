@@ -6,6 +6,7 @@ import joblib
 
 from sklearn.ensemble import RandomForestRegressor
 from xgboost import XGBClassifier
+import time
 
 from modificarDatos import filtrado_datos_energia_particula, filtrado_datos
 
@@ -69,13 +70,11 @@ def entrenarClasificacion():
     print('Fin entrenamiento Clasificacion')
 
 
-
-def main():
+def entrenar_modelos():
     entrenarClasificacion()
     entrenarRegresion()
+    time.sleep(1)
 
-if __name__ == "__main__":
-    main()
 
 
 

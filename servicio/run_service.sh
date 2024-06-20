@@ -1,5 +1,6 @@
 #!/bin/bash
 
+python3 entrenarModelos.py
 python3 clasificacion.py
 python3 modificarDatos.py
 python3 regresion.py
