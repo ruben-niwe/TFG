@@ -7,14 +7,13 @@ import logging
 from clasificacion import clasificacion_XGBoost
 from regresion import regresion_energiaEntrada
 
-
 app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to the classification API. Use /uploadfile/{model_type} to upload a CSV file."}
+    return {"message": "Welcome to the classification API. Use /classify or /regress to upload a CSV file."}
 
-@app.post("/uploadfile/{model_type}")
+@app.post("/classify")
 async def TipoParticula(file: UploadFile):
     # Leer el archivo subido
     contents = await file.read()
@@ -29,15 +28,24 @@ async def TipoParticula(file: UploadFile):
         
     return {"predictions": response}
 
-
-@app.post("/uploadfile/{model_type}")
+@app.post("/regress")
 async def EnergiaEntrada(file: UploadFile):
-    #Leer el archivo subido
+    # Leer el archivo subido
     contents = await file.read()
 
-    #Leer el contenido en un DataFrame de pandas
+    # Leer el contenido en un DataFrame de pandas
     df = pd.read_csv(io.StringIO(contents.decode('utf-8')))
 
-    predictions = EnergiaEntrada(df)
+    tipo_particula, energia = regresion_energiaEntrada(df)
 
-    return {"predicctions": predictions}
+    if tipo_particula == 0:
+        particula = "pion"
+    else:
+        particula = "kaon"
+    
+    respuesta = {
+        "tipo_particula": particula,
+        "energia": f"{energia} GeV"
+    }
+
+    return respuesta

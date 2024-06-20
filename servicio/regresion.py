@@ -21,4 +21,4 @@ def regresion_energiaEntrada(df):
 
     trueE_predecida = rf_loaded.predict(X)
 
-    return trueE_predecida
+    return predicciones_clasificacion, trueE_predecida
