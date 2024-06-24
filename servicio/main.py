@@ -3,7 +3,7 @@ import pandas as pd
 import io
 import logging
 
-# Importar las funciones de regresion y clasificación desde el módulo
+# Importar las funciones necesarias
 from clasificacion import clasificacion_XGBoost
 from regresion import regresion_energiaEntrada
 from entrenarModelos import entrenar_modelos

@@ -10,7 +10,7 @@ def modificar_datos(df):
 def filtrado_datos_energia(df, N):
     kaones = []
     labels = []
-    valores_trueE = []  # Usamos un conjunto para almacenar valores únicos de trueE
+    valores_trueE = []  
 
     df_sorted = df.sort_values(by=['eventID', 'hitTime'], ascending=[True, False])
 
